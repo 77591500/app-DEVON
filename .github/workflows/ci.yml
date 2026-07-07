@@ -1,0 +1,28 @@
+name: website-devon
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: descargar el codigo
+        uses: actions/checkout@v3
+
+      - name: Hacer el log in en docker
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Construir la imagen docker
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/web-site-3:v1 -t ${{ secrets.DOCKER_USERNAME }}/web-site-3:latest .
+
+      - name: publicar la imagen de docker
+        run: |
+          docker push ${{ secrets.DOCKER_USERNAME }}/web-site-3:v1
+          docker push ${{ secrets.DOCKER_USERNAME }}/web-site-3:latest

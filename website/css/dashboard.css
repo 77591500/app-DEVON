@@ -1,0 +1,6 @@
+.devops-container { padding: 20px; background: #0f172a; color: white; border-radius: 8px; }
+.metrics-grid { display: block; margin-top: 20px; }
+.metric-card { background: #1e293b; padding: 15px; border-radius: 6px; margin-bottom: 15px; border-left: 4px solid #3b82f6; }
+.metric-value { font-size: 18pt; font-weight: bold; color: #3b82f6; margin: 10px 0; }
+.progress-bar { background: #334155; height: 8px; border-radius: 4px; overflow: hidden; }
+.progress { background: #3b82f6; height: 100%; width: 0%; transition: width 0.5s ease; }

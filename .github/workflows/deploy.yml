@@ -1,0 +1,33 @@
+name: Deploy Website to Oracle Linux
+
+on:
+  workflow_run:
+    workflows: ["website-devon"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Conectarse por SSH y desplegar en el servidor
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            echo "--- 1. Descargando la última versión de Docker Hub ---"
+            docker pull ${{ secrets.DOCKER_USERNAME }}/web-site-3:latest
+
+            echo "--- 2. Deteniendo y eliminando el contenedor anterior (si existe) ---"
+            docker stop website || true
+            docker rm website || true
+
+            echo "--- 3. Desplegando el nuevo contenedor en el puerto 8084 ---"
+            docker run -d --name website -p 8084:80 ${{ secrets.DOCKER_USERNAME }}/web-site-3:latest
+
+            echo "--- 4. Verificando que el sitio responda (Prueba de salud) ---"
+            sleep 3
+            curl -I http://localhost:8084

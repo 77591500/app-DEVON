@@ -2,53 +2,22 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido - Enterprise App</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Banco Seguro - Panel Principal</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f9; text-align: center; padding: 50px; }
+        .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: inline-block; }
+        h1 { color: #1e3a8a; }
+        .balance { font-size: 24px; color: #10b981; font-weight: bold; margin: 20px 0; }
+        button { background-color: #1e3a8a; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #3b82f6; }
+    </style>
 </head>
 <body>
-
-    <!-- Página de Bienvenida -->
-    <div class="main-container">
-	    <h1>🚀 Despliegue Automatizado v2.0 con Jenkins y Docker</h1>
-        <p>Sistema de gestión de infraestructura automatizada.</p>
-        <hr>
-
-        <div class="actions">
-            <a href="views/auth/login.html" class="btn">
-                Ingresar al Sistema
-            </a>
-        </div>
+    <div class="card">
+        <h1>Sistemas Centrales - Banco Seguro</h1>
+        <p>Bienvenido al entorno intermediado por Nginx</p>
+        <div class="balance">Saldo Disponible: $1,000.00</div>
+        <button onclick="alert('Transacción procesada con éxito en el backend protegido')">Hacer Depósito Seguro</button>
     </div>
-
-    <!-- Dashboard DevOps -->
-    <div class="devops-container">
-        <header class="dashboard-header">
-            <h1>DevOps Control Panel <span class="badge">v2.0</span></h1>
-            <p>Desplegado Automáticamente por: <strong>Jenkins Enterprise Server</strong></p>
-        </header>
-
-        <div class="metrics-grid">
-            <div class="metric-card" id="cpu-card">
-                <h3>Uso de CPU (Simulado)</h3>
-                <div class="metric-value" id="cpu-value">0%</div>
-                <div class="progress-bar">
-                    <div class="progress" id="cpu-bar"></div>
-                </div>
-            </div>
-
-            <div class="metric-card" id="ram-card">
-                <h3>Consumo de Memoria RAM</h3>
-                <div class="metric-value" id="ram-value">0 GB</div>
-                <div class="progress-bar">
-                    <div class="progress" id="ram-bar"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Cargar JavaScript -->
-    <script src="js/dashboard.js"></script>
-
 </body>
 </html>
